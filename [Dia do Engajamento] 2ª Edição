@@ -1,0 +1,39 @@
+<?php
+require_once "vendor/autoload.php";
+
+use Spatie\CalendarLinks\Link;
+
+$from = DateTime::createFromFormat('Y-m-d H:i', '2019-12-03 14:00'); //criando a data de início do evento
+$to = DateTime::createFromFormat('Y-m-d H:i', '2019-12-03 19:00'); //criando a data de fim do evento
+
+$link = Link::create('[Dia do Engajamento] 2ª Edição', $from, $to) //definindo o título do evento
+    ->description('Como tudo o que é bom merece virar tendencia, a Santo Caos anuncia com muito orgulho a Segunda Edição do Dia do Engajamento
+    
+    Nesse dia de tendências e novidades, teremos palestras com especialistas em formato TED, além do lançamento do nosso estudo Terceirização e Engajamento.
+
+O evento acontecerá no dia 03/12, no civi-co, das 14h às 18h, e na sequência teremos um happy-hour no mesmo local.
+
+
+
+Temas confirmados:
+
+Saúde mental, trabalho e engajamento
+Democratização da inovação nas empresas
+Compliance: como engajar as pessoas com temas difíceis
+Terceirização e Engajamento: Lançamento oficial do estudo e mesa-redonda') //definindo a descrição do evento
+    ->address('R. Dr. Virgílio de Carvalho Pinto, 445 - Pinheiros, São Paulo - SP, 05415-030'); //definindo o local do evento
+
+// Gerando o link para o Google Calendar
+echo $link->google();
+
+print ('<br>'); //quebra de linha
+print ('<br>'); //quebra de linha
+
+// Gerando o link para o Yahoo calendar
+echo $link->yahoo();
+
+print ('<br>'); //quebra de linha
+print ('<br>'); //quebra de linha
+
+// Gerando o link para iCal & Outlook
+echo $link->ics();
